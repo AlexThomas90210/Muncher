@@ -72,20 +72,12 @@ body {
 }
 
 /* Main Div */
-#main .storeImg {
-
-   /*
-   display:block;
-   margin: auto;
-   */
-}
-
 #main h3 {
    margin-top: 40px;
 }
 
 #main h2 {
-   margin-top: 0px;
+   margin-top: 0;
 }
 
 /*  Social Media */
@@ -94,22 +86,20 @@ body {
 }
 
 #SocialMedia .SocialIcon {
-   margin:0px 15px 0px 10px;
+   margin:0 15px 0 10px;
    display:inline-block;
 }
 
 #SocialMedia p {
-   margin: 0px 0px 0px 30px;
-   display: table-cell;
+   margin: 0 0 0 30px;
    vertical-align: bottom;
    display:inline-block;
 }
 
 #Form {
    margin-top: 20px;
-   padding-right: 0px;
+   padding-right: 0;
    padding-left: 30px;
-
 }
 
 #SocialMedia #input {
@@ -120,7 +110,7 @@ body {
 /*
 For changing the placeholder color i searched google and found this
 REF: http://stackoverflow.com/questions/2610497/change-an-inputs-html5-placeholder-color-with-css
-that stackoverflow answer stated that you need seperate selector for each browser type elsebrowsers ignore them all
+that stackoverflow answer stated that you need seperate selector for each browser type else some browsers ignore them all
 */
 #SocialMedia #input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color: white;
@@ -143,7 +133,7 @@ that stackoverflow answer stated that you need seperate selector for each browse
    font-size: 1.6em;
    margin-left: 10px;
    border: 2px solid rgb(249, 80, 6);
-   box-shadow: -3px 3px 0px 0px rgb(249, 80, 6);
+   box-shadow: -3px 3px 0 0 rgb(249, 80, 6);
    background-color: rgb(92, 249, 48);
 }
 
@@ -152,13 +142,13 @@ that stackoverflow answer stated that you need seperate selector for each browse
 footer {
    margin-top:20px;
    padding-top: 15px;
-   padding-bottom: 0px;
+   padding-bottom: 0;
    color:white;
    background-color: rgb(171, 179, 216);
 }
 
 footer p {
-   font-size: 0.9;
-   padding: 0px;
-   margin: 0px
+   font-size: 0.9em;
+   padding: 0;
+   margin: 0;
 }
