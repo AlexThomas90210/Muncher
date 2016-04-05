@@ -53,11 +53,22 @@ body {
    margin-right: 25px;
 }
 
+/* as per the designer direction , the following selectors make the nav have that orange background with green text fixing a few issues i came across*/
 .navbar-default .navbar-nav>.active>a,
+ .navbar-default .navbar-nav>.active>a:hover ,
  .navbar-default .navbar-nav>li> a:hover ,
- .navbar-default .navbar-nav>.active>a:hover{
+  .navbar-default .navbar-nav>li> a:focus:hover,
+  .navbar-default .navbar-nav>.active>a:focus{
    color: rgb(92, 249, 48);
    background-color: rgb(249, 80, 6);
+}
+
+
+ .navbar-default .navbar-nav>li> a:focus {
+   /* need to remove that blue outline after somebody presses the modal conact form */
+   color: inherit;
+   background-color: inherit;
+   outline:none;
 }
 
 /* Main Div */
