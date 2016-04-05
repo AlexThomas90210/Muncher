@@ -8,7 +8,7 @@ body {
    font-family: "Gosmick"
 }
 
-@media (min-width: 1200px) {
+@media screen and (min-width: 1200px) and (max-width: 1500px) {
     .container {
         max-width: 970px;
     }
