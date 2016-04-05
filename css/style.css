@@ -9,9 +9,12 @@ body {
 }
 
 @media (min-width: 1200px) {
-    .container{
+    .container {
         max-width: 970px;
     }
+    .container-fluid {
+       max-width: 970px;
+   }
 }
 
 /* Head Image */
@@ -24,6 +27,10 @@ body {
    position:absolute;
    height:60%;
    top:20%;
+}
+
+#backgroundImage {
+   width:100%;
 }
 
 /* Nav Bar */
