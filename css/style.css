@@ -1,0 +1,140 @@
+@font-face {
+    font-family: Gosmick;
+    src: url(../fonts/GosmickSansBold.ttf);
+}
+
+body {
+   color: rgb(249, 80, 6);
+   font-family: "Gosmick"
+}
+
+@media (min-width: 1200px) {
+    .container{
+        max-width: 970px;
+    }
+}
+
+/* Head Image */
+#headImageBackgroundContainer {
+   position: relative;
+   min-height:40%;
+}
+
+#headLogo {
+   position:absolute;
+   height:60%;
+   top:20%;
+}
+
+/* Nav Bar */
+.navbar {
+   padding-top: 10px;
+   background-color: white;
+   border: none;
+   font-size:1.2em;
+}
+
+@media (min-width: 1200px) {
+    .navbar{
+        padding-right: 200px;
+    }
+}
+
+.navbar-default .navbar-nav>li> a {
+   color: rgb(249, 80, 6);
+   padding: 4px;
+   margin-right: 25px;
+}
+.navbar-default .navbar-nav>.active>a {
+   color: rgb(92, 249, 48);
+   background-color: rgb(249, 80, 6);
+}
+
+/* Main Div */
+#main .storeImg {
+   display:block;
+   margin: auto;
+}
+
+#main h4 {
+   margin-top: 40px;
+}
+
+#main h3 {
+   margin-top: 0px;
+}
+
+/*  Social Media */
+#SocialMedia {
+   margin-top:30px;
+}
+
+#SocialMedia .SocialIcon {
+   margin:0px 15px 0px 10px;
+   display:inline-block;
+}
+
+#SocialMedia p {
+   margin: 0px 0px 0px 30px;
+   display: table-cell;
+   vertical-align: bottom;
+   display:inline-block;
+}
+
+#Form {
+   margin-top: 20px;
+   padding-right: 0px;
+   padding-left: 30px;
+
+}
+
+#SocialMedia #input {
+   background-color: rgb(171, 179, 216);
+   border: 2px solid rgb(249, 80, 6);
+   font-size: 1.6em;
+}
+/*
+For changing the placeholder color i searched google and found this
+REF: http://stackoverflow.com/questions/2610497/change-an-inputs-html5-placeholder-color-with-css
+that stackoverflow answer stated that you need seperate selector for each browser type elsebrowsers ignore them all
+*/
+#SocialMedia #input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: white;
+    opacity:  0.7;
+}
+#SocialMedia #input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: white;
+   opacity:  0.7;
+}
+#SocialMedia #input::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: white;
+   opacity:  0.7;
+}
+#SocialMedia #input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: white;
+   opacity:  0.7;
+}
+
+#SocialMedia #submit {
+   font-size: 1.6em;
+   margin-left: 10px;
+   border: 2px solid rgb(249, 80, 6);
+   box-shadow: -3px 3px 0px 0px rgb(249, 80, 6);
+   background-color: rgb(92, 249, 48);
+}
+
+
+/* Footer */
+footer {
+   margin-top:20px;
+   padding-top: 15px;
+   padding-bottom: 0px;
+   color:white;
+   background-color: rgb(171, 179, 216);
+}
+
+footer p {
+   font-size: 0.9;
+   padding: 0px;
+   margin: 0px
+}
