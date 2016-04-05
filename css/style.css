@@ -41,9 +41,9 @@ body {
    font-size:1.2em;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1000px) {
     .navbar{
-        padding-right: 200px;
+        padding-right: 100px;
     }
 }
 
@@ -52,15 +52,21 @@ body {
    padding: 4px;
    margin-right: 25px;
 }
-.navbar-default .navbar-nav>.active>a {
+
+.navbar-default .navbar-nav>.active>a,
+ .navbar-default .navbar-nav>li> a:hover ,
+ .navbar-default .navbar-nav>.active>a:hover{
    color: rgb(92, 249, 48);
    background-color: rgb(249, 80, 6);
 }
 
 /* Main Div */
 #main .storeImg {
+
+   /*
    display:block;
    margin: auto;
+   */
 }
 
 #main h4 {
