@@ -1,50 +1,148 @@
-@font-face {
-    font-family: Gosmick;
-    src: url(../fonts/GosmickSansBold.ttf);
-}
+/* include font provided by designer,
+ I got GosmickSansBold.ttf from designer then generated the apropriate fonts with https://www.fontsquirrel.com/tools/webfont-generator*/
+ @font-face {
+     font-family: 'gosmicksansbold';
+     src: url('../fonts/gosmicksansbold-webfont.eot');
+     src: url('../fonts/gosmicksansbold-webfont.eot?#iefix') format('embedded-opentype'),
+          url('../fonts/gosmicksansbold-webfont.woff2') format('woff2'),
+          url('../fonts/gosmicksansbold-webfont.woff') format('woff'),
+          url('../fonts/gosmicksansbold-webfont.ttf') format('truetype'),
+          url('../fonts/gosmicksansbold-webfont.svg#gosmicksansbold') format('svg');
+     font-weight: normal;
+     font-style: normal;
+ }
 
+/* as specified by the designer all the page text is using this color & font except some specific submit buttons*/
 body {
    color: rgb(249, 80, 6);
-   font-family: "Gosmick"
+   font-family: "gosmicksansbold"
 }
 
+/* in the design there is alot of space between the content and the edge of the window,
+ im going restrict the container if its > 1200px && < 1500px ,
+  if its smaller than 1200px I will let the default container do its job to use all the screen space available
+  if its bigger than 1500px the default container has enough space anyway*/
 @media screen and (min-width: 1200px) and (max-width: 1500px) {
-    .container {
-        max-width: 970px;
-    }
+    .container,
     .container-fluid {
-       max-width: 970px;
-   }
+        max-width: 1000px;
+    }
 }
 
-/* Head Image */
-#headImageBackgroundContainer {
-   position: relative;
-   min-height:40%;
+/*MARK: *** Reusable Classes ****/
+/* quick ref:
+.padding-left-none
+.padding-right-none
+.padding-none
+.margin-top-none
+.margin-top-sm
+.margin-top-md
+.margin-top-lg
+.margin-none
+.width-full
+.large-font
+.small-font
+.styled-submit
+.styled-input
+.relative
+*/
+/* a few classes to help me align stuff acording to what the designer specified */
+.padding-left-none {
+   padding-left: 0;
 }
+.padding-right-none {
+   padding-right: 0;
+}
+.padding-none {
+   padding: 0;
+}
+
+.margin-top-none {
+   margin-top:0;
+}
+.margin-top-sm {
+   margin-top:20px;
+}
+.margin-top-md {
+   margin-top:30px;
+}
+.margin-top-lg {
+   margin-top:40px;
+}
+
+.margin-none{
+   margin: 0;
+}
+.width-full {
+   width:100%;
+}
+/* a few classes to help me change the font */
+.font-lg {
+   font-size:1.4em;
+   line-height: 1.5em;
+}
+.font-sm {
+   font-size:0.8em;
+}
+
+.submit-muncher-style  {
+   color:rgb(249, 80, 6);
+   margin-left: 10px;
+   border: 2px solid rgb(249, 80, 6);
+   box-shadow: -3px 3px 0 0 rgb(249, 80, 6);
+   background-color: rgb(92, 249, 48);
+   vertical-align: middle;
+}
+
+.input-muncher-style {
+   background-color: rgb(171, 179, 216);
+   border: 2px solid rgb(249, 80, 6);
+}
+/*
+For changing the placeholder color i searched google and found this
+REF: http://stackoverflow.com/questions/2610497/change-an-inputs-html5-placeholder-color-with-css
+that stackoverflow answer stated that you need seperate selector for each browser type else some browsers ignore them all
+*/
+.input-muncher-style::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: white;
+    opacity:  0.7;
+}
+.input-muncher-style:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: white;
+   opacity:  0.7;
+}
+.input-muncher-stylet::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: white;
+   opacity:  0.7;
+}
+.input-muncher-style:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: white;
+   opacity:  0.7;
+}
+
+.relative {
+   position:relative;
+}
+/* now I have declared my reusable classes the following is more specific and it is in order of when its declared in the HTML
+   Im trying to keep the specific css that I cant reuse to a minimum, but still have comments ready if I do need to add stuff there
+   for example MARK: Intro is empty but avalaible if i need something there
+
+/* MARK: Header Image */
 
 #headLogo {
+   /* logo absolute so that it stacks ontop of the background , container div is relative*/
    position:absolute;
    height:60%;
    top:20%;
 }
 
-#backgroundImage {
-   width:100%;
-}
-
-/* Nav Bar */
+/* MARK: Nav Bar */
 .navbar {
+   /* making nav look like what was specified */
    padding-top: 10px;
    background-color: white;
    border: none;
    font-size:1.2em;
-}
-
-@media (min-width: 1000px) {
-    .navbar{
-        padding-right: 100px;
-    }
 }
 
 .navbar-default .navbar-nav>li> a {
@@ -53,7 +151,13 @@ body {
    margin-right: 25px;
 }
 
-/* as per the designer direction , the following selectors make the nav have that orange background with green text fixing a few issues i came across*/
+/*  looking at the design , the nav is not inline with the rightside of the content , adding a little margin to the last <li> to incoporate this in the build */
+.navbar-default .navbar-nav>li:last-child> a {
+    margin-right: 50px;
+}
+
+/* as per the designer direction , the following selectors make the nav have that orange background with green text
+bunch of selectors to fix a few issues i came across when they were active or not or in focus etc*/
 .navbar-default .navbar-nav>.active>a,
  .navbar-default .navbar-nav>.active>a:hover ,
  .navbar-default .navbar-nav>li> a:hover ,
@@ -63,92 +167,54 @@ body {
    background-color: rgb(249, 80, 6);
 }
 
-
  .navbar-default .navbar-nav>li> a:focus {
-   /* need to remove that blue outline after somebody presses the modal conact form */
    color: inherit;
    background-color: inherit;
+   /* need to remove that blue outline after somebody presses the modal contact form */
    outline:none;
 }
 
-/* Main Div */
-#main h3 {
-   margin-top: 40px;
-}
+/* MARK: Intro */
 
-#main h2 {
-   margin-top: 0;
-}
+/* MARK: Main  */
 
-/*  Social Media */
-#SocialMedia {
-   margin-top:30px;
-}
-
-#SocialMedia .SocialIcon {
+/* MARK: Social Media */
+.SocialIcon {
+   /* FB icon is not alligned to the left of the div and the gap between the 2 is larger again thats why weird margin declaration */
    margin:0 15px 0 10px;
    display:inline-block;
 }
 
-#SocialMedia p {
-   margin: 0 0 0 30px;
-   vertical-align: bottom;
+/* to make that paragraph fit exactly like the design stated i needed something like a col-md-7.5 & col-md4.5
+because the bootstrap grid line was exactly in the way,I tried a bunch of stuff like no padding , no margin ,different number of cols
+not a huge fan of "right:-25px" because it means I need to remove it with a media query else it will go offscreen
+but in the end this gave me the best results because ::
+closest result to what designer specified,
+keeps aligned to bottom of .SocialIcons,
+allows form to keep that text-center class which is nice when viewport goes to small,
+can allow the <p> to be pretty close to the <input>
+allows me to have col-md-5 on that form , it was breaking when trying col-md-4 sometimes on resize
+sorry long explaination it was just fustrating to get it right and thought maybe you were wondering why i did it weirdly
+*/
+.p-bot-right-alligned {
+   position: absolute;
+   bottom: 0;
+   right:-25px;
    display:inline-block;
 }
-
-#Form {
-   margin-top: 20px;
-   padding-right: 0;
-   padding-left: 30px;
+/* remove that stuff now */
+@media (max-width: 768px) {
+   .p-bot-right-alligned {
+      position: static;
+      vertical-align: bottom;
+   }
 }
 
-#SocialMedia #input {
-   background-color: rgb(171, 179, 216);
-   border: 2px solid rgb(249, 80, 6);
-   font-size: 1.6em;
-}
-/*
-For changing the placeholder color i searched google and found this
-REF: http://stackoverflow.com/questions/2610497/change-an-inputs-html5-placeholder-color-with-css
-that stackoverflow answer stated that you need seperate selector for each browser type else some browsers ignore them all
-*/
-#SocialMedia #input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color: white;
-    opacity:  0.7;
-}
-#SocialMedia #input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color: white;
-   opacity:  0.7;
-}
-#SocialMedia #input::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color: white;
-   opacity:  0.7;
-}
-#SocialMedia #input:-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color: white;
-   opacity:  0.7;
-}
-
-#SocialMedia #submit {
-   font-size: 1.6em;
-   margin-left: 10px;
-   border: 2px solid rgb(249, 80, 6);
-   box-shadow: -3px 3px 0 0 rgb(249, 80, 6);
-   background-color: rgb(92, 249, 48);
-}
-
-
-/* Footer */
+/*MARK: Footer */
 footer {
    margin-top:20px;
    padding-top: 15px;
-   padding-bottom: 0;
+   padding-bottom: 2px;
    color:white;
    background-color: rgb(171, 179, 216);
-}
-
-footer p {
-   font-size: 0.9em;
-   padding: 0;
-   margin: 0;
 }

@@ -18,18 +18,21 @@
     <![endif]-->
   </head>
   <body>
-    <div id="headImageBackgroundContainer">
+     <!--  putting images inside header and setting it to relative so i can stack & align the logo inside the background -->
+    <div class="relative">
+      <!-- putting logo inside container so its left aligned with the content on any width -->
       <div class="container">
          <img id="headLogo" class="img-responsive" src="./images/MuncherLogo.png" alt="Muncher Logo" />
       </div>
-      <img id="backgroundImage" class="img-responsive" src="./images/BannerBackground.png" alt="Muncher banner Background" />
+      <img class="img-responsive width-full" src="./images/BannerBackground.png" alt="Muncher banner Background" />
     </div>
 
    <!-- MARK: Nav -->
+
    <nav class="navbar navbar-default navbar-static-top" role="navigation">
-      <div class="container-fluid">
+      <div class="container">
 
-
+         <!-- hamburger menu when width is small for the nav -->
          <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
                <span class="sr-only">Toggle navigation</span>
@@ -51,7 +54,8 @@
       </div>
    </nav>
 
-<!-- Intro -->
+<!--MARK: Intro -->
+
    <section id="intro">
       <div class="container">
          <div class ="row">
@@ -65,22 +69,22 @@
       </div>
    </section>
 
-   <!-- Main -->
+   <!--MARK: Main -->
    <section id="main">
       <div class="container">
          <div class="row">
             <div id="VideoDiv" class="col-md-9">
-
+               <!-- video player to go here but we our team doesnt have a video yet, so just using the image the designers provided -->
                <img class="img-responsive" src="images/VideoScreen.png" alt="Video">
-
             </div>
+
             <div id="AppStoresDiv" class="col-md-3 text-center">
 
-               <h2>Available NOW!</h2>
-              <img class="storeImg" src="images/appStoreBox.png" alt="Apple App Store" />
-              <img class="storeImg" src="images/googleplayBox.png" alt="Android App Store"/>
-               <h3>For Mobile or Tablet</h3>
-               <img  src="images/mobile-icon.png" alt="Apple App Store" />
+               <h2 class="margin-top-none">Available NOW!</h2>
+               <img class="storeImg" src="images/appStoreBox.png" alt="Apple App Store" />
+               <img class="storeImg" src="images/googleplayBox.png" alt="Android App Store"/>
+               <h3 class="margin-top-lg">For Mobile or Tablet</h3>
+               <img src="images/mobile-icon.png" alt="Apple App Store" />
                <img src="images/tablet_touch.png" alt="Andoird App Store" />
 
             </div>
@@ -89,23 +93,30 @@
    </section>
 
 
-   <!-- Social Media-->
+   <!--MARK: Social Media-->
 
-   <section id="SocialMedia">
+   <section id="SocialMedia" class="margin-top-md">
       <div class="container">
          <div class="row">
             <!-- on the PSD after the facebook & twitter icon the text's baseline is alligned to the bottom of the icons , also the input & submit buttons actually go lower than the bottom of the icons
+               was pretty fustrating trying to align this perfectly to what the designers specified , I basicly needed a col-md-7.5
             -->
-            <div class="col-md-7 col-sm-12">
+            <div class="col-md-7 col-sm-9 .relative">
                <img class="SocialIcon" src="images/facebookIcon.png" alt="Facebook icon" />
                <img class="SocialIcon" src="images/twitterIcon.png" alt="Twitter Icon" />
-               <p class="small">
+               <p class="p-bot-right-alligned margin-none">
                   Sign up for our newsletter to recieve upgrades and other free stuff
                </p>
             </div>
-            <div id="Form" class="col-md-5 col-sm-12">
-               <input id="input" type="email" name="name" placeholder=" name@email" value="">
-               <input id="submit" type="button" name="name" value="Submit">
+            <div class="col-md-5 col-sm-12 margin-top-sm text-center">
+
+               <form class="form-inline">
+                  <div class="form-group">
+                    <input id="inlineInputName" class="input-muncher-style font-lg" type="email" name="name" placeholder=" name@email" required value="">
+                  </div>
+                  <input id="submit" class="submit-muncher-style font-lg " type="submit" name="name" value="submit">
+               </form>
+
             </div>
          </div>
       </div>
@@ -116,7 +127,7 @@
       <div class="container">
          <div class="row">
             <div class="col-xs-12 text-center">
-               <p class="small">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae iaculis ipsum, at elementum leo. In congue elementum ante quis rhoncus. Proin malesuada nec arcu sit amet ullamcorper. Donec consectetur tellus diam, quis cursus augue vestibulum sit amet.<br>
+               <p class="font-sm margin-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae iaculis ipsum, at elementum leo. In congue elementum ante quis rhoncus. Proin malesuada nec arcu sit amet ullamcorper. Donec consectetur tellus diam, quis cursus augue vestibulum sit amet.<br>
                   <br>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae iaculis ipsum, at elementum leo.
                </p>
@@ -157,7 +168,7 @@
                </div>
                <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button id="contactForSubmit" class="btn btn-primary" type="submit">Send</button>
+                  <button id="contactForSubmit" class="btn btn-primary styled-submit" type="submit">Send</button>
                </div>
             </form>
             <!-- End of Contact form -->
