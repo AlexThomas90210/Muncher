@@ -1,5 +1,7 @@
 /* include font provided by designer,
- I got GosmickSansBold.ttf from designer then generated the apropriate fonts with https://www.fontsquirrel.com/tools/webfont-generator*/
+ I got GosmickSansBold.ttf from designer then generated the apropriate fonts with https://www.fontsquirrel.com/tools/webfont-generator
+this makes the font cross browser functional
+ */
  @font-face {
      font-family: 'gosmicksansbold';
      src: url('../fonts/gosmicksansbold-webfont.eot');
@@ -15,7 +17,7 @@
 /* as specified by the designer all the page text is using this color & font except some specific submit buttons*/
 body {
    color: rgb(249, 80, 6);
-   font-family: "gosmicksansbold"
+   font-family: "gosmicksansbold";
 }
 
 /* in the design there is alot of space between the content and the edge of the window,
@@ -69,14 +71,14 @@ body {
 .margin-top-lg {
    margin-top:40px;
 }
-
 .margin-none{
    margin: 0;
 }
+
 .width-full {
    width:100%;
 }
-/* a few classes to help me change the font */
+
 .font-lg {
    font-size:1.4em;
    line-height: 1.5em;
@@ -92,6 +94,11 @@ body {
    box-shadow: -3px 3px 0 0 rgb(249, 80, 6);
    background-color: rgb(92, 249, 48);
    vertical-align: middle;
+}
+.submit-muncher-style:focus {
+   color :rgb(239, 50, 6);
+   background-color: rgb(62, 219, 28);
+   outline:none;
 }
 
 .input-muncher-style {
@@ -185,8 +192,8 @@ bunch of selectors to fix a few issues i came across when they were active or no
    display:inline-block;
 }
 
-/* to make that paragraph fit exactly like the design stated i needed something like a col-md-7.5 & col-md4.5
-because the bootstrap grid line was exactly in the way,I tried a bunch of stuff like no padding , no margin ,different number of cols
+/* to make that paragraph fit exactly like the design stated i needed something like a col-md-7.5 & col-md-4.5
+because the bootstrap grid line was exactly in the way,I tried a bunch of stuff like no padding , no margin ,different number of cols etc.
 not a huge fan of "right:-25px" because it means I need to remove it with a media query else it will go offscreen
 but in the end this gave me the best results because ::
 closest result to what designer specified,
