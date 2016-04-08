@@ -113,10 +113,11 @@
                <!-- Subscribe Form -->
                <form class="form-inline" id="subscribeForm" method="post" action="contact.php" onsubmit="return false;">
                   <div class="form-group">
-                    <input id="inlineInputName" class="input-muncher-style font-lg" type="subscribeEmail" name="name" placeholder=" name@email" required value="">
+                    <input class="input-muncher-style font-lg" type="email" name="subscribeEmail" placeholder=" name@email" required value="">
                   </div>
-                  <input id="submit" class="submit-muncher-style font-lg " type="submit" name="name" value="submit">
+                  <input class="submit-muncher-style font-lg " type="submit" value="submit">
                </form>
+               <p id="subscribeResponse"></p>
                <!-- End of Subscribe Form -->
 
             </div>
@@ -169,8 +170,10 @@
                   </div>
                </div>
                <div class="modal-footer">
+                  <!-- where the ajax response will be put -->
+                  <p id="contactResponse"></p>
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button id="contactForSubmit" class="btn submit-muncher-style" type="submit">Send</button>
+                  <button class="btn submit-muncher-style" type="submit">Send</button>
                </div>
             </form>
             <!-- End of Contact form -->

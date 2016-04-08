@@ -15,12 +15,22 @@ class User extends Savable {
 	private $email;
    private $subscribed;
 
-   public function __construct( $email , $name = NULL) {
+	const ERROR_NOT_VALID_EMAIL = "Not a valid email";
+
+   public function __construct( $email , $name = NULL) { //constructor throws
       //due to one of the form fields not having a name parameter in the design , I need to consider that name will be NULL sometimes
 
+		//first we are checking that the email is valid
+		//REF: http://www.w3schools.com/php/filter_validate_email.asp
+		if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+			//not a valid email, throw exception
+  			throw new Exception(self::ERROR_NOT_VALID_EMAIL);
+		}
+
+		//the next try has is for the DB , we handle the error here, creating a new user if the email is not in db
       try {
             //try to get the user
-            $DBUserRow = DB::sharedInstance()->getUser($email); //throws
+            $DBUserRow = DB::sharedInstance()->getUser($email); //throws if user not in db , returns the associative array of the row if user found
             //user found
             $this->id = $DBUserRow["id"];
             $this->name = $DBUserRow["name"];
