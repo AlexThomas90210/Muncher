@@ -4,12 +4,12 @@ $(document).ready(function(){
    processAjaxFormResponse = function(data , outputTarget){
       //Success , display status
       if  (data.status == "success"){
-         outputTarget.css("color","green")
+         outputTarget.addClass("success-message")
                               .html(data.message);
 
       } else if (data.status == "error") {
          //error set the error
-         outputTarget.css("color","red")
+         outputTarget.addClass("error-message")
                               .html(data.message);
       }
    };
@@ -17,7 +17,8 @@ $(document).ready(function(){
 
    //Modal contact form Ajax
    $('#contactForm').on("submit",function(e) {
-      $("#contactResponse").html("Sending...");
+      $("#contactResponse").removeClass("error-message success-message")
+                                            .html("Sending...");
       form = $(this);
       $.ajax({
          type: form.attr('method'),
@@ -28,10 +29,11 @@ $(document).ready(function(){
             data = $.parseJSON(data);
             processAjaxFormResponse(data , $("#contactResponse") );
             if (data.status == "success") {
-               $("#contact").delay( 1000 )
-                                    .queue(function(){
-                                       $(this).modal('hide');
-                                    });
+               //success , wait a little bit so user can see the success message
+               setTimeout( function(){
+                  //hide modal
+                  $('.modal').modal('hide');
+               }, 1000);
             }
          }
       });
@@ -40,6 +42,8 @@ $(document).ready(function(){
 
    //Subscribe Inline Form Ajax
    $('#subscribeForm').on("submit",function(e) {
+      $("#subscribeResponse").removeClass("error-message success-message")
+                                            .html("Submiting...");
       form = $(this);
       $.ajax({
          type: form.attr('method'),

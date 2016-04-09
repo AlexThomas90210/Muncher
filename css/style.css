@@ -46,6 +46,8 @@ body {
 .small-font
 .styled-submit
 .styled-input
+.error-message
+.success-message
 .relative
 
 */
@@ -127,7 +129,12 @@ that stackoverflow answer stated that you need seperate selector for each browse
    color: white;
    opacity:  0.7;
 }
-
+.error-message{
+   color:red;
+}
+.success-message{
+   color:rgb(62, 209, 28);
+}
 .relative {
    position:relative;
 }
