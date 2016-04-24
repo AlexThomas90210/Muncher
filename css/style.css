@@ -1,4 +1,7 @@
-/* include font provided by designer,
+/*
+Im using the BEM naming convention for my classes.
+
+include font provided by designer, Could not find it on google fonts
  I got GosmickSansBold.ttf from designer then generated the apropriate fonts with https://www.fontsquirrel.com/tools/webfont-generator
 this makes the font cross browser functional
  */
@@ -15,7 +18,7 @@ this makes the font cross browser functional
  }
 
 /* as specified by the designer all the page text is using this color & font except some specific submit buttons*/
-body {
+.body {
    color: rgb(249, 80, 6);
    font-family: "gosmicksansbold";
 }
@@ -31,139 +34,35 @@ body {
     }
 }
 
-/*MARK: *** Reusable Classes ****/
-/* quick ref:
-.padding-left-none
-.padding-right-none
-.padding-none
-.margin-top-none
-.margin-top-sm
-.margin-top-md
-.margin-top-lg
-.margin-none
-.width-full
-.large-font
-.small-font
-.styled-submit
-.styled-input
-.error-message
-.success-message
-.relative
-
-*/
-/* a few classes to help me align stuff acording to what the designer specified */
-.padding-left-none {
-   padding-left: 0;
-}
-.padding-right-none {
-   padding-right: 0;
-}
-.padding-none {
-   padding: 0;
+/* MARK: header */
+.banner {
+    position:relative;
 }
 
-.margin-top-none {
-   margin-top:0;
-}
-.margin-top-sm {
-   margin-top:20px;
-}
-.margin-top-md {
-   margin-top:30px;
-}
-.margin-top-lg {
-   margin-top:40px;
-}
-.margin-none{
-   margin: 0;
+.banner__background {
+    width:100%;
 }
 
-.width-full {
-   width:100%;
-}
-
-.font-lg {
-   font-size:1.4em;
-   line-height: 1.5em;
-}
-.font-sm {
-   font-size:0.8em;
-}
-
-.submit-muncher-style  {
-   color:rgb(249, 80, 6);
-   margin-left: 10px;
-   border: 2px solid rgb(249, 80, 6);
-   box-shadow: -3px 3px 0 0 rgb(249, 80, 6);
-   background-color: rgb(92, 249, 48);
-   vertical-align: middle;
-}
-.submit-muncher-style:focus {
-   color :rgb(239, 50, 6);
-   background-color: rgb(62, 219, 28);
-   outline:none;
-}
-
-.input-muncher-style {
-   background-color: rgb(171, 179, 216);
-   border: 2px solid rgb(249, 80, 6);
-}
-/*
-For changing the placeholder color i searched google and found this
-REF: http://stackoverflow.com/questions/2610497/change-an-inputs-html5-placeholder-color-with-css
-that stackoverflow answer stated that you need seperate selector for each browser type else some browsers ignore them all
-*/
-.input-muncher-style::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color: white;
-    opacity:  0.7;
-}
-.input-muncher-style:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color: white;
-   opacity:  0.7;
-}
-.input-muncher-stylet::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color: white;
-   opacity:  0.7;
-}
-.input-muncher-style:-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color: white;
-   opacity:  0.7;
-}
-.error-message{
-   color:red;
-}
-.success-message{
-   color:rgb(62, 209, 28);
-}
-.relative {
-   position:relative;
-}
-/* now I have declared my reusable classes the following is more specific and it is in order of when its declared in the HTML
-   Im trying to keep the specific css that I cant reuse to a minimum, but still have comments ready if I do need to add stuff there
-   for example MARK: Intro is empty but avalaible if i need something there
-
-/* MARK: Header Image */
-
-#headLogo {
-   /* logo absolute so that it stacks ontop of the background , container div is relative*/
-   position:absolute;
-   height:60%;
-   top:20%;
+.banner__logo {
+    /* logo absolute so that it stacks ontop of the background , container div is relative*/
+    position:absolute;
+    height:60%;
+    top:20%;
 }
 
 /* MARK: Nav Bar */
 .navbar {
-   /* making nav look like what was specified */
-   padding-top: 10px;
-   background-color: white;
-   border: none;
-   font-size:1.2em;
+    /* making nav look like what was specified */
+    padding-top: 10px;
+    background-color: white;
+    border: none;
+    font-size:1.2em;
 }
 
 .navbar-default .navbar-nav>li> a {
-   color: rgb(249, 80, 6);
-   padding: 4px;
-   margin-right: 25px;
+    color: rgb(249, 80, 6);
+    padding: 4px;
+    margin-right: 25px;
 }
 
 /*  looking at the design , the nav is not inline with the rightside of the content , adding a little margin to the last <li> to incoporate this in the build */
@@ -172,38 +71,66 @@ that stackoverflow answer stated that you need seperate selector for each browse
 }
 
 /* as per the designer direction , the following selectors make the nav have that orange background with green text
-bunch of selectors to fix a few issues i came across when they were active or not or in focus etc*/
+I have a bunch of selectors to fix a few issues i came across when they were active or not or in focus etc*/
 .navbar-default .navbar-nav>.active>a,
- .navbar-default .navbar-nav>.active>a:hover ,
- .navbar-default .navbar-nav>li> a:hover ,
-  .navbar-default .navbar-nav>li> a:focus:hover,
-  .navbar-default .navbar-nav>.active>a:focus{
-   color: rgb(92, 249, 48);
-   background-color: rgb(249, 80, 6);
+.navbar-default .navbar-nav>.active>a:hover ,
+.navbar-default .navbar-nav>li> a:hover ,
+.navbar-default .navbar-nav>li> a:focus:hover,
+.navbar-default .navbar-nav>.active>a:focus {
+    color: rgb(92, 249, 48);
+    background-color: rgb(249, 80, 6);
 }
 
- .navbar-default .navbar-nav>li> a:focus {
-   color: inherit;
-   background-color: inherit;
-   /* need to remove that blue outline after somebody presses the modal contact form */
-   outline:none;
+.navbar-default .navbar-nav>li> a:focus {
+    color: inherit;
+    background-color: inherit;
+    /* need to remove that blue outline after somebody presses the modal contact form */
+    outline:none;
 }
 
-/* MARK: Intro */
+/* MARK: intro
+intro and main are here just for future use I thought i would keep them in
+.intro {
+}
+*/
 
-/* MARK: Main  */
+/* MARK: main
+.main {
+}
+*/
 
-/* MARK: Social Media */
-.SocialIcon {
-   /* FB icon is not alligned to the left of the div and the gap between the 2 is larger again thats why weird margin declaration */
-   margin:0 15px 0 10px;
-   display:inline-block;
+/* MARK: appStore */
+.appStore {
+    /* kept this in even tho its empty to keep with the BEM naming convention as those .appStore__heading headings are purely for that block*/
 }
 
-/* to make that paragraph fit exactly like the design stated i needed something like a col-md-7.5 & col-md-4.5
+.appStore__heading {
+    margin-top:0;
+}
+
+.appStore__heading--lower {
+    margin-top:40px;
+}
+
+/* MARK: social-media */
+.social-media {
+    margin-top:30px;
+}
+
+.social-container {
+    position: relative;
+}
+
+.social-container__social-image {
+    /* FB icon is not alligned to the left of the div and the gap between the 2 images is larger again thats why weird margin declaration */
+    margin:0 15px 0 10px;
+    display:inline-block;
+}
+
+/* to make that paragraph thats uses .social-container__text fit exactly like the design stated i needed something like a col-md-7.5 & col-md-4.5
 because the bootstrap grid line was exactly in the way,I tried a bunch of stuff like no padding , no margin ,different number of cols etc.
 not a huge fan of "right:-25px" because it means I need to remove it with a media query else it will go offscreen
-but in the end this gave me the best results because ::
+but in the end this gave me the best results because;
 closest result to what designer specified,
 keeps aligned to bottom of .SocialIcons,
 allows form to keep that text-center class which is nice when viewport goes to small,
@@ -211,25 +138,97 @@ can allow the <p> to be pretty close to the <input>
 allows me to have col-md-5 on that form , it was breaking when trying col-md-4 sometimes on resize
 sorry long explaination it was just fustrating to get it right and thought maybe you were wondering why i did it weirdly
 */
-.p-bot-right-alligned {
-   position: absolute;
-   bottom: 0;
-   right:-25px;
-   display:inline-block;
+.social-container__text {
+    position: absolute;
+    bottom: 0;
+    right:-25px;
+    display:inline-block;
+    margin: 0;
 }
 /* remove that stuff now */
 @media (max-width: 768px) {
-   .p-bot-right-alligned {
+   .social-container__text {
       position: static;
       vertical-align: bottom;
    }
 }
 
-/*MARK: Footer */
-footer {
-   margin-top:20px;
-   padding-top: 15px;
-   padding-bottom: 2px;
-   color:white;
+/* MARK: subscribe-form-container */
+.subscribe-form-container {
+    margin-top:20px;
+}
+
+/* MARK: muncher-btn */
+.muncher-btn {
+    color:rgb(249, 80, 6);
+    margin-left: 10px;
+    border: 2px solid rgb(249, 80, 6);
+    box-shadow: -3px 3px 0 0 rgb(249, 80, 6);
+    background-color: rgb(92, 249, 48);
+    vertical-align: middle;
+}
+
+.muncher-btn:focus {
+    color: rgb(239, 50, 6);
+    background-color: rgb(62, 219, 28);
+    outline: none;
+}
+
+.muncher-btn--lg {
+    font-size:1.4em;
+    line-height: 1.5em;
+}
+
+/* MARK: muncher-input */
+.muncher-input {
    background-color: rgb(171, 179, 216);
+   border: 2px solid rgb(249, 80, 6);
+}
+/*
+For changing the placeholder color i searched google and found this
+REF: http://stackoverflow.com/questions/2610497/change-an-inputs-html5-placeholder-color-with-css
+that stackoverflow answer stated that you need seperate selector for each browser type else some browsers ignore them all
+*/
+.muncher-input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: white;
+    opacity:  0.7;
+}
+.muncher-input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: white;
+   opacity:  0.7;
+}
+.muncher-input::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: white;
+   opacity:  0.7;
+}
+.muncher-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: white;
+   opacity:  0.7;
+}
+
+.muncher-input--lg {
+    font-size:1.4em;
+    line-height: 1.5em;
+}
+
+.footer {
+    margin-top:20px;
+    padding-top: 15px;
+    padding-bottom: 2px;
+    color:white;
+    background-color: rgb(171, 179, 216);
+}
+
+.footer__p {
+    font-size: 0.8em;
+    margin: 0;
+}
+
+/*MARK:  error message & success-message  */
+.error-message{
+   color:red;
+}
+
+.success-message{
+   color:rgb(62, 209, 28);
 }
