@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Muncher</title>
+    <title>Buy Muncher</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -43,92 +43,17 @@
             <!-- Nav -->
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="index.html">HOME</a></li>
+                    <li><a href="index.html">HOME</a></li>
                     <li><a href="About.html">ABOUT</a></li>
                     <li><a href="Press.html">PRESS</a></li>
-                    <li><a href="Buy.html">BUY</a></li>
+                    <li class="active"><a href="Buy.html">BUY</a></li>
                     <li><a href="#contact" data-toggle="modal">CONTACT</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!--MARK: Intro -->
-    <section class="intro">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <p>Muncher is a fun, easy to use app that helps you eat more healthy food. Create an muncher and feed it to see the effects.
-                        <br> Customise your muncher, set yourself goals,get advice on your diet and many other features.
-                        <br> Transform your attitude towards food with muncher, download now to see what it can do for you.
-                   </p>
-                </div>
-           </div>
-        </div>
-    </section>
 
-    <!--MARK: Main -->
-    <section class="main">
-        <div class="container">
-            <div class="row">
-
-                <!--Video -->
-                <div id="VideoDiv" class="col-md-9">
-                    <!-- video player to go here but we our team doesnt have a video yet, so just using the image the designers provided -->
-                    <img class="img-responsive" src="images/video-image.png" alt="Video">
-                </div>
-
-                <!-- App Store -->
-                <div class="appStore col-md-3 text-center">
-                    <h2 class="appStore__heading">Available NOW!</h2>
-                    <a href="https://www.apple.com">
-                        <img src="images/store-apple.png" alt="Apple App Store" />
-                    </a>
-                    <a href="https://www.google.com">
-                        <img src="images/store-google.png" alt="Android App Store" />
-                    </a>
-                    <h3 class="appStore__heading--lower">For Mobile or Tablet</h3>
-                    <img src="images/device-mobile.png" alt="Mobile Devices" />
-                    <img src="images/device-tablet.png" alt="Tablet Devices" />
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!--MARK: Social Media-->
-    <section class="social-media">
-        <div class="container">
-            <div class="row">
-
-                <!-- Social Media Container -->
-                <!-- on the PSD after the facebook & twitter icon the text's baseline is alligned to the bottom of the icons , also the input & submit buttons actually go lower than the bottom of the icons
-                was pretty fustrating trying to align this perfectly to what the designers specified , I basicly needed a col-md-7.5-->
-                <div class="social-container col-md-7 col-sm-9">
-                    <a href="https://www.facebook.com">
-                        <img class="social-container__social-image" src="images/social-facebook.png" alt="Facebook icon" />
-                    </a>
-                    <a href="https://www.twitter.com">
-                        <img class="social-container__social-image" src="images/social-twitter.png" alt="Twitter Icon" />
-                    </a>
-                    <p class="social-container__text">
-                        Sign up for our newsletter to recieve upgrades and other free stuff
-                    </p>
-                </div>
-
-                <!-- Subscribe Form -->
-                <div class="subscribe-form-container col-md-5 col-sm-12 text-center">
-                    <form class="form-inline" id="subscribeForm" method="post" action="contactSimple.php" onsubmit="return false;">
-                        <div class="form-group">
-                            <input class="muncher-input muncher-input--lg" type="email" name="subscribeEmail" placeholder=" name@email" required value="">
-                        </div>
-                        <input class="muncher-btn muncher-btn--lg" type="submit" value="submit">
-                    </form>
-                    <p id="subscribeResponse"></p>
-                </div>
-
-            </div>
-        </div>
-    </section>
 
     <!--MARK: Footer -->
     <footer class="footer">
@@ -152,13 +77,11 @@
                 <!-- Contact Form -->
                 <form id="contactForm" class="form-horizontal" method="post" action="contactSimple.php" onsubmit="return false;">
 
-                    <!-- Modal Head -->
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h4 class="modal-title text-center">Contact</h4>
                     </div>
 
-                    <!-- Modal Body -->
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="contactName" class="col-sm-2 control-label">Name</label>
@@ -180,7 +103,6 @@
                         </div>
                     </div>
 
-                    <!-- Modal Footer -->
                     <div class="modal-footer">
                         <!-- where the ajax response will be put -->
                         <p id="contactResponse"></p>
