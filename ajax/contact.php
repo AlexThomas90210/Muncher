@@ -10,6 +10,7 @@ User's subscribed is true/false because if a user unsubs to the newsletter, we d
 a user could unsub via the newletter with an "unsubscribe" at the bottom of the email (not implementing the actual email this just theoretical)
 When a user sends us a message via contact, if its a new user , we are going to be very sneaky and automatically subscribe him to newsletter
 */
+
 //model
 require_once '../private/PHP/Model/Constants.php';
 require_once '../private/PHP/Model/Savable.abstract.class.php';
@@ -18,7 +19,7 @@ require_once '../private/PHP/Model/User.class.php';
 require_once '../private/PHP/Model/MysqliDB.class.php';
 require_once '../private/PHP/Model/DB.singleton.class.php';
 //controller
-require_once '../privatePHP/Controllers/FormController.php';
+require_once '../private/PHP/Controllers/FormController.php';
 
 $formController = new FormController();
 $formController->outputJSON();

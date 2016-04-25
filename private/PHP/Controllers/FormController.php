@@ -5,47 +5,49 @@ class FormController {
     const SUCCESS_MESSAGE_SENT = "Sent! Thank you for your message!";
     const SUCCESS_SUBSCRIPTION = "Subscribed!";
 
-    public $user
-    private $errorMessage
-    private $successMessage
+    public $user;
+    private $errorMessage;
+    private $successMessage;
 
     public function __construct() {
-        $this->checkForSubscribeForm;
-        $this->checkForContactForm;
+        $this->checkForSubscribeForm();
+        $this->checkForContactForm();
     }
 
     //output json for the ajax handler to use on the front end
-    public function $outputJSON(){
-        if ( isset($successMessage) ) {
+    public function outputJSON() {
+        if  ( isset($this->successMessage) ) {
+            //we were successfull
             $response = [
                 "status" => "success",
-                "message" => $successMessage
+                "message" => $this->successMessage
             ];
             echo json_encode($response);
-        } else if ( isset($errorMessage) ) {
+        } else if ( isset($this->errorMessage) ) {
+            //we have an error
             $response = [
                 "status" => "error",
-                "message" => $errorMessage
+                "message" => $this->errorMessage
             ];
             echo json_encode($response);
         }
     }
 
-    private function checkForSubscribeForm(){
+    private function checkForSubscribeForm() {
         if ( isset( $_POST[SUBSCRIBE_EMAIL] )  ){
             //** SUBSCRIBE SUBMITED **
             //create the user , constructor takes care of everything, including throwing if its not a valid email
             try {
-                $user = new User( $_POST[SUBSCRIBE_EMAIL] );  //throws
-                $user->setSubscribed( true );
-                $successMessage = FormController::SUCCESS_SUBSCRIPTION;
+                $this->user = new User( $_POST[SUBSCRIBE_EMAIL] );  //throws
+                $this->user->setSubscribed( true );
+                $this->successMessage = FormController::SUCCESS_SUBSCRIPTION;
             } catch (Exception $e) {
-                $errorMessage = $e->getMessage();
+                $this->errorMessage = $e->getMessage();
             }
         }
    }
 
-    private function checkForContactForm(){
+    private function checkForContactForm() {
         if ( isset( $_POST[CONTACT_NAME] ) && isset( $_POST[CONTACT_EMAIL]) && isset( $_POST[CONTACT_MESSAGE]) ){
             //** CONTACT SUBMITED **
             //get variables in easier to read variable , DB class will take care of sanitization
@@ -55,12 +57,12 @@ class FormController {
 
             //create new user
             try {
-                $user = new User( $email , $name ); //throws
+                $this->user = new User( $email , $name ); //throws
                 //send the message the user sent
-                $user->sendMessage($message);
-                $successMessage = FormController::SUCCESS_MESSAGE_SENT;
+                $this->user->sendMessage($message);
+                $this->successMessage = FormController::SUCCESS_MESSAGE_SENT;
             } catch (Exception $e) {
-                $errorMessage = $e->getMessage();
+                $this->errorMessage = $e->getMessage();
             }
          }
     }

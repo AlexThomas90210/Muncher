@@ -1,5 +1,5 @@
 <?php
-/* For the User class I wanted to try an Active Records style design , total over kill for this project considering how basic it is but just for fun & practice.
+/* For the User class I wanted to try an Active Records style design that i was reading about recently , total over kill for this project considering how basic it is but just for fun & practice.
 basically the developer just talks to the User class and it takes care of persisting itself to the database.
 ->save(); is expected to be called after working with a User instance to lower the database requests .
 ->save() is not automatically called after using a setter because if somebody did setName(); setEmail(); setSubscribed(); that would call the databse 3 times
@@ -8,8 +8,7 @@ this makes the model classes a little more complicated but makes working with th
 
 */
 
-class User extends Savable
-{
+class User extends Savable {
     private $id;
     private $name;
     private $email;
@@ -17,8 +16,7 @@ class User extends Savable
 
     const ERROR_NOT_VALID_EMAIL = 'Not a valid email';
 
-    public function __construct($email, $name = null)
-    {
+    public function __construct($email, $name = null) {
         //constructor throws
         //due to one of the form fields not having a name parameter in the design , I need to consider that name will be NULL sometimes
 
@@ -40,7 +38,7 @@ class User extends Savable
             $this->subscribed = $DBUserRow['subscribed'];
 
             //now our user class is exactly what is in the DB , check if the user supplied a name
-            if (($name != null)) {
+            if ($name != null) {
                 //a name was supplied in constructer, I do it like this so that the class is aware if what we have !=  what is in the DB
                 //setName will take care of checking if its a new name is different and setting the $changed for save() function to be aware somehting is different
                 $this->setName($name);
@@ -56,16 +54,14 @@ class User extends Savable
         }
     }
 
-    public function __destruct()
-    {
+    public function __destruct() {
         //safety net incase developer does not call save() by accident, if the developer did call save, this will not call the db in that case so its not wasteful
         $this->save();
         //I wanted to just have save(); in the destruct and not need to manually call save(); but after a bit of research it turns out destruct is not called 100% of the time
         // REF: http://stackoverflow.com/questions/2385047/when-will-destruct-not-be-called-in-php
     }
 
-    public function getId()
-    {
+    public function getId() {
         //id is lazy loaded. In the case that a new User was made that didnt come from the db,check if its empty , if it is call save, which will set the id
         if (is_null($this->id)) {
             $this->save();
@@ -74,23 +70,19 @@ class User extends Savable
         return $this->id;
     }
 
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
-    public function getEmail()
-    {
+    public function getEmail() {
         return $this->email;
     }
 
-    public function getSubscribed()
-    {
+    public function getSubscribed() {
         return $this->subscribed;
     }
 
-    public function setName($name)
-    {
+    public function setName($name) {
         //for all the setters I need to check if the new value is actually different because
         // using the Savable method setChangeTrue makes the User instance call an update on the database next time save() is called,
         // which is not needed if nothing has changed
@@ -102,8 +94,7 @@ class User extends Savable
         }
     }
 
-    public function setEmail($email)
-    {
+    public function setEmail($email) {
         //check if new varable is different
         if ($this->email != $email) {
             $this->email = $email;
@@ -111,8 +102,7 @@ class User extends Savable
         }
     }
 
-    public function setSubscribed($subscribe)
-    {
+    public function setSubscribed($subscribe) {
         //check if new varable is different
         if ($this->subscribed != $subscribe) {
             $this->subscribed = $subscribe;
@@ -120,23 +110,20 @@ class User extends Savable
         }
     }
 
-    public function sendMessage($message)
-    {
+    public function sendMessage($message) {
         $userId = $this->getId();
         DB::sharedInstance()->insertMessage($userId, $message);
     }
 
    /*** Savable abstract class Implementation ***/
 
-   protected function insertIntoDB()
-   {
-       //since the class needs to be inserted into DB , the userId is not set yet, the db->createUser returns the inserted id.
+   protected function insertIntoDB() {
+        //since the class needs to be inserted into DB , the userId is not set yet, the db->createUser returns the inserted id.
         $this->id = DB::sharedInstance()->createUser($this);
         //im not setting the id inside createUser because id is private , also dont want to have a public setter for setting id's
    }
 
-    protected function updateInDB()
-    {
+    protected function updateInDB() {
         DB::sharedInstance()->updateUser($this);
     }
 }

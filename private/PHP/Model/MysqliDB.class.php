@@ -14,8 +14,7 @@ Messages has : id, userId , messageText
 
 I am subclassing the mysqli class as I see no reason not too, this will allow me to call $this->function instead of $this->mysqli->function
 */
-class MysqliDB extends mysqli implements DBInterface
-{
+class MysqliDB extends mysqli implements DBInterface {
     //Credentials
     const DB_HOST = 'localhost';
     const DB_USERNAME = 'root'; //would obviously change this but Im not sure how it works for you when I give you the sql file so im leaving it standard
@@ -26,8 +25,7 @@ class MysqliDB extends mysqli implements DBInterface
     const ERROR_USER_NOT_FOUND = 'Error: User not found';
     const ERROR_CORRUPT_DATA = 'Error: Corrupt Data';
 
-    public function __construct()
-    {
+    public function __construct() {
         //as this is a subclass of mysqli,call the parent __contruct
         parent::__construct(self::DB_HOST, self::DB_USERNAME, self::DB_PASSWORD, self::DB_NAME);
         //check here if there is an error
@@ -36,8 +34,7 @@ class MysqliDB extends mysqli implements DBInterface
         }
     }
 
-    public function __destruct()
-    {
+    public function __destruct() {
         //checking that there is no connection error in the first place else trying to close prompts an error if the connection wasnt open/failed in the first place
         if (!$this->connect_error) {
             $this->close();
@@ -45,8 +42,7 @@ class MysqliDB extends mysqli implements DBInterface
     }
 
     //create user
-    public function createUser($user)
-    {
+    public function createUser($user) {
         //sanitize the variables
         $name = $this->real_escape_string($user->getName());
         $email = $this->real_escape_string($user->getEmail());
@@ -61,8 +57,7 @@ class MysqliDB extends mysqli implements DBInterface
     }
 
    //Get the user by email
-   public function getUser($email)
-   {
+   public function getUser($email){
        //sanitize variables
         $email = $this->real_escape_string($email);
 
@@ -89,8 +84,7 @@ class MysqliDB extends mysqli implements DBInterface
    }
 
     //put message in messages table with the users id
-    public function insertMessage($userId, $message)
-    {
+    public function insertMessage($userId, $message) {
         //sanitize variables, userId not coming from user but better to be safe
         $userId = $this->real_escape_string($userId);
         $message = $this->real_escape_string($message);
@@ -104,16 +98,15 @@ class MysqliDB extends mysqli implements DBInterface
     }
 
     //update the name of the user
-    public function updateUser(User $user)
-    {
+    public function updateUser(User $user) {
         //sanitize all variables
-        $userId = $this->real_escape_string($user->getId);
-        $name = $this->real_escape_string($user->getName);
-        $email = $this->real_escape_string($user->getEmail);
-        $subscribed = $this->real_escape_string($user->isSubscribed);
+        $userId = $this->real_escape_string($user->getId());
+        $name = $this->real_escape_string($user->getName());
+        $email = $this->real_escape_string($user->getEmail());
+        $subscribed = $this->real_escape_string($user->getSubscribed());
 
         $query = "UPDATE Users
-                    SET name='$name' , email='$email' , subscribed='$subscribed' ,
+                    SET name='$name' , email='$email' , subscribed='$subscribed'
                     WHERE id='$userId' ";
         $result = $this->query($query) or die('ERROR: '.$this->error);
 

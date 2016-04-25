@@ -5,11 +5,9 @@
 //I was using a Mysqli::sharedinstance(); but I could see that if I wanted to change it to PDO then I would have to change that line everywhere in the project,which could potentially get messy
 //so instead im going to use this class which is purely there to call the static function sharedInstance , which is always going to give me a DB object that implements DBInterface
 
-class DB
-{
+class DB {
     //static shared instance to create a singleton
-    public static function sharedInstance()
-    {
+    public static function sharedInstance() {
         //static variable inside function allows that variable to be available next time this function is called
         static $db;
         //check if $db has been initialised before, if not init it

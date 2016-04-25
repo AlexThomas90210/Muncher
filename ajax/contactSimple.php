@@ -16,8 +16,7 @@ $_POST['subscribeEmail']) = "this email should fail";
 
 //function to exit with error message for the ajax call
 //just quick note that for mysqli querys im using this function instead of "or die("")" , purely for the user experience, user doesnt want to know the mysql error
-function exitWithErrorJSON($errorMsg)
-{
+function exitWithErrorJSON($errorMsg) {
     echo json_encode(array(
         'status' => 'error',
         'message' => $errorMsg,
@@ -25,8 +24,7 @@ function exitWithErrorJSON($errorMsg)
     exit();
 }
 
-function successJSON($successMsg)
-{
+function successJSON($successMsg) {
     echo json_encode(array(
         'status' => 'success',
         'message' => $successMsg,
@@ -34,8 +32,7 @@ function successJSON($successMsg)
 }
 
 //function to validate email
-function checkEmail($email)
-{
+function checkEmail($email) {
     if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
         //not an email, return error json , and exit the script
         exitWithErrorJSON('not a valid email');

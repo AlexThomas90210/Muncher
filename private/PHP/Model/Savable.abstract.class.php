@@ -2,8 +2,7 @@
 //please read the readme before looking at this file
 
 //abstract class for Savable entities
-abstract class Savable
-{
+abstract class Savable {
     //keeps track is its a new entity
     private $new = false;
     //keeps track if the entity has changes that need to be persisted
@@ -14,8 +13,7 @@ abstract class Savable
     abstract protected function updateInDB();
 
     // only public function , what is used to persist the entity into the DB
-    public function save()
-    {
+    public function save() {
         if ($this->new) {
             //is new , insert into the db
             $this->insertIntoDB();
@@ -30,14 +28,12 @@ abstract class Savable
     }
 
     //to be used if an entity is created that has never been inserted into the db
-    protected function setNewTrue()
-    {
+    protected function setNewTrue() {
         $this->new = true;
     }
 
     //to be used inside any setter of an entity that changed a value of a variable
-    protected function setChangedTrue()
-    {
+    protected function setChangedTrue() {
         $this->changed = true;
     }
 }
