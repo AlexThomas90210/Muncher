@@ -78,7 +78,7 @@ if (isset($_POST['contactName']) && isset($_POST['contactEmail']) && isset($_POS
                 VALUES ( '$email' , true)
                     ON DUPLICATE KEY
                     UPDATE subscribed = true ";
-    $result = $mysqli->query($query) or exitWithErrorJSON($mysqli->error);
+    $result = $mysqli->query($query) or exitWithErrorJSON('Error : Could not subscribe!');
 
     //echo sucess
     successJSON('Subscribed!');
