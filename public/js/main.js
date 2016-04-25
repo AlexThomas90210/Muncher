@@ -64,8 +64,13 @@ $(document).ready(function(){
     };
 
     //function to process the data from the server and output the message into the target element
-    processAjaxFormResponse = function(data , outputTarget){
+    processAjaxFormResponse = function(data , form , outputTarget){
         if  (data.status == "success"){
+            //user successfully reached his goal so disable the form
+            form.find(':input')
+                .removeClass('input--valid input--invalid')
+                .not('[data-dismiss]')
+                .prop('disabled' , true);
             //Success , display message
             outputTarget.addClass("success-message")
                             .html(data.message);
@@ -74,14 +79,6 @@ $(document).ready(function(){
             //Error, display error
             displayErrorMessage(outputTarget , data.message);
         }
-    };
-
-    //function to disable form
-    disableForm = function( form ){
-        form.find(':input')
-                .removeClass('input--valid input--invalid')
-                .not('[data-dismiss]')
-                .prop('disabled' , true);
     };
 
     //Modal contact form Ajax submit handler
@@ -102,7 +99,7 @@ $(document).ready(function(){
 
             success: function(data) {
                 data = $.parseJSON(data);
-                processAjaxFormResponse(data , outputTarget );
+                processAjaxFormResponse(data , form ,outputTarget );
                 if (data.status == "success") {
                     //success , wait a little bit so user can see the success message before closing modal
                     setTimeout( function(){
@@ -110,7 +107,6 @@ $(document).ready(function(){
                         $('.modal').modal('hide');
                     }, 1000);
                 }
-                disableForm(form);
             },
             error: function(request, status, error) {
                 displayErrorMessage( outputTarget , "Error! Please check your connection or try again later");
@@ -136,7 +132,7 @@ $(document).ready(function(){
 
             success: function(data) {
                 data = $.parseJSON(data);
-                processAjaxFormResponse(data , outputTarget );
+                processAjaxFormResponse(data , form ,outputTarget );
                 disableForm(form);
             },
             error: function(request, status, error) {
