@@ -45,7 +45,7 @@ function checkEmail($email) {
 if (isset($_POST['contactName']) && isset($_POST['contactEmail']) && isset($_POST['contactMessage'])) {
     //make sure its a valid email , get variables, prepared for DB
     $email = checkEmail($_POST['contactEmail']);
-    $mysqli = new mysqli('localhost', 'root', '', 'muncher');
+    $mysqli = new mysqli('localhost', 'root', '', 'Muncher');
     //sanitize
     $name = $mysqli->real_escape_string($_POST['contactName']);
     $email = $mysqli->real_escape_string($email);

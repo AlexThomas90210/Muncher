@@ -170,7 +170,7 @@ sorry long explaination it was just fustrating to get it right and thought maybe
     transition: all ease-in-out .45s;
 }
 
-.btn--muncher:focus {
+.btn--muncher:hover {
     color: rgb(239, 50, 6);
     background-color: rgb(62, 219, 28);
     outline: none;
