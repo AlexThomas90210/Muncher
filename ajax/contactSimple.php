@@ -52,7 +52,6 @@ if (isset($_POST['contactName']) && isset($_POST['contactEmail']) && isset($_POS
     $message = $mysqli->real_escape_string($_POST['contactMessage']);
 
     //insert user, update the user name if its already there, incase somebody subscribed, then messaged, we wouldnt have name in that case
-    $mysqli = new mysqli('localhost', 'root', '', 'muncher');
     $query = "INSERT INTO Users (name , email , subscribed)
                 VALUES ('$name' , '$email' , true )
                     ON DUPLICATE KEY
@@ -70,7 +69,7 @@ if (isset($_POST['contactName']) && isset($_POST['contactEmail']) && isset($_POS
 } elseif (isset($_POST['subscribeEmail'])) {
     //get email prepared for db
     $email = checkEmail($_POST['subscribeEmail']);
-    $mysqli = new mysqli('localhost', 'root', '', 'muncher');
+    $mysqli = new mysqli('localhost', 'root', '', 'Muncher');
     $email = $mysqli->real_escape_string($email);
 
     //insert into DB, ignore if email already exists
