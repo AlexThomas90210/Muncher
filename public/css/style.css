@@ -166,8 +166,8 @@ sorry long explaination it was just fustrating to get it right and thought maybe
     box-shadow: -3px 3px 0 0 rgb(249, 80, 6);
     background-color: rgb(92, 249, 48);
     vertical-align: middle;
-    -webkit-transition: all ease-in-out .45s;
-    transition: all ease-in-out .45s;
+    -webkit-transition: opacity ease-in-out .45s;
+    transition: opacity ease-in-out .45s;
 }
 
 .btn--muncher:hover {
@@ -177,7 +177,7 @@ sorry long explaination it was just fustrating to get it right and thought maybe
 }
 
 .btn--muncher:disabled {
-    opacity: 0.4;
+    opacity: 0.7;
     cursor: not-allowed;
 }
 
@@ -188,12 +188,12 @@ sorry long explaination it was just fustrating to get it right and thought maybe
 
 /* MARK: input--muncher */
 .input--muncher {
-   background-color: rgb(171, 179, 216);
-   color: white ;
-   border: 2px solid rgb(249, 80, 6);
-   -webkit-transition: all ease-in-out .45s;
-   transition: all ease-in-out .45s;
-   padding-left:6px;
+    background-color: rgb(171, 179, 216);
+    color: white ;
+    border: 2px solid rgb(249, 80, 6);
+    -webkit-transition: opacity ease-in-out .45s , border-color ease-in-out .60s , box-shadow ease-in-out .60s;
+    transition: opacity ease-in-out .45s , border-color ease-in-out .60s , box-shadow ease-in-out .60s;
+    padding-left:6px;
 }
 /*
 For changing the placeholder color i searched google and found this
@@ -205,19 +205,19 @@ that stackoverflow answer stated that you need seperate selector for each browse
     opacity:  0.7;
 }
 .input--muncher:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color: white;
-   opacity:  0.7;
+    color: white;
+    opacity:  0.7;
 }
 .input--muncher::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color: white;
-   opacity:  0.7;
+    color: white;
+    opacity:  0.7;
 }
 .input--muncher:-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color: white;
-   opacity:  0.7;
+    color: white;
+    opacity:  0.7;
 }
 .input--muncher:disabled{
-    opacity: 0.5;
+    opacity: 0.7;
     cursor: not-allowed;
 }
 
@@ -226,7 +226,7 @@ that stackoverflow answer stated that you need seperate selector for each browse
     line-height: 1.5em;
 }
 
-/* using !important to override some of the bootstrap stuff*/
+/* using !important to override some of the bootstrap stuff also in the case of valid & invalid its necesary for it to always display like this no matter what style are applied to that element*/
 .input--valid {
     border-color: rgb(62, 209, 28) !important;
     box-shadow: 0 1px 1px rgba(62, 209, 28, 0.075) inset, 0 0 8px rgba(62, 209, 28, 0.3) !important;
@@ -240,6 +240,9 @@ that stackoverflow answer stated that you need seperate selector for each browse
     outline: 0 none !important;
 }
 
+/* little hack I found to stop chrome from changing things when the user uses auto fill, it was being a real pain
+http://stackoverflow.com/questions/2920306/google-chrome-form-autofill-and-its-yellow-background
+*/
 .form-control:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px white inset !important;
 }
@@ -248,9 +251,6 @@ that stackoverflow answer stated that you need seperate selector for each browse
     -webkit-box-shadow: 0 0 0 1000px #eee inset !important;
 }
 
-/* little hack I found to stop chrome from changing things when the user uses auto fills, it was being a real pain
-http://stackoverflow.com/questions/2920306/google-chrome-form-autofill-and-its-yellow-background
-*/
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
