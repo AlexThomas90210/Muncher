@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    //I had all my functions in a different file , but put it all into main to save a http request
 
     //function to check valid email
     //http://stackoverflow.com/questions/2855865/jquery-regex-validation-of-e-mail-address
@@ -17,7 +18,6 @@ $(document).ready(function(){
         if ( input.prop( 'required') === true && !input.val() ) {
             input.addClass("input--invalid")
                     .removeClass("input--valid");
-                    console.log("end");
             //return error message
             return "Please fill in all the required fields";
         }
@@ -28,11 +28,9 @@ $(document).ready(function(){
             return "That is not a valid email !";
         }
         //can add some more valdiators here but there is no need because email && required is all that needed in the website atm
-        console.log("all good");
         //if function gets this far the input is valid , add the necesarry classes, since there is no return from the function I can check if it returns nil to see if its valid
         input.addClass("input--valid")
                 .removeClass("input--invalid");
-                console.log("end");
         return null;
     };
 

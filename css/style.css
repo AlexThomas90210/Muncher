@@ -166,6 +166,7 @@ sorry long explaination it was just fustrating to get it right and thought maybe
     box-shadow: -3px 3px 0 0 rgb(249, 80, 6);
     background-color: rgb(92, 249, 48);
     vertical-align: middle;
+    -webkit-transition: all ease-in-out .45s;
     transition: all ease-in-out .45s;
 }
 
@@ -190,6 +191,7 @@ sorry long explaination it was just fustrating to get it right and thought maybe
    background-color: rgb(171, 179, 216);
    color: white ;
    border: 2px solid rgb(249, 80, 6);
+   -webkit-transition: all ease-in-out .45s;
    transition: all ease-in-out .45s;
    padding-left:6px;
 }
