@@ -34,7 +34,7 @@ this makes the font cross browser functional
     }
 }
 
-/* MARK: header */
+/* MARK: banner */
 .banner {
     position:relative;
 }
@@ -158,59 +158,116 @@ sorry long explaination it was just fustrating to get it right and thought maybe
     margin-top:20px;
 }
 
-/* MARK: muncher-btn */
-.muncher-btn {
+/* MARK: .btn--muncher */
+.btn--muncher {
     color:rgb(249, 80, 6);
     margin-left: 10px;
     border: 2px solid rgb(249, 80, 6);
     box-shadow: -3px 3px 0 0 rgb(249, 80, 6);
     background-color: rgb(92, 249, 48);
     vertical-align: middle;
+    transition: all ease-in-out .45s;
 }
 
-.muncher-btn:focus {
+.btn--muncher:focus {
     color: rgb(239, 50, 6);
     background-color: rgb(62, 219, 28);
     outline: none;
 }
 
-.muncher-btn--lg {
+.btn--muncher:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.btn--lg {
     font-size:1.4em;
     line-height: 1.5em;
 }
 
-/* MARK: muncher-input */
-.muncher-input {
+/* MARK: input--muncher */
+.input--muncher {
    background-color: rgb(171, 179, 216);
+   color: white ;
    border: 2px solid rgb(249, 80, 6);
+   transition: all ease-in-out .45s;
+   padding-left:6px;
 }
 /*
 For changing the placeholder color i searched google and found this
 REF: http://stackoverflow.com/questions/2610497/change-an-inputs-html5-placeholder-color-with-css
 that stackoverflow answer stated that you need seperate selector for each browser type else some browsers ignore them all
 */
-.muncher-input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+.input--muncher::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color: white;
     opacity:  0.7;
 }
-.muncher-input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+.input--muncher:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
    color: white;
    opacity:  0.7;
 }
-.muncher-input::-moz-placeholder { /* Mozilla Firefox 19+ */
+.input--muncher::-moz-placeholder { /* Mozilla Firefox 19+ */
    color: white;
    opacity:  0.7;
 }
-.muncher-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+.input--muncher:-ms-input-placeholder { /* Internet Explorer 10-11 */
    color: white;
    opacity:  0.7;
+}
+.input--muncher:disabled{
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
-.muncher-input--lg {
+.input--lg {
     font-size:1.4em;
     line-height: 1.5em;
 }
 
+/* using !important to override some of the bootstrap stuff*/
+.input--valid {
+    border-color: rgb(62, 209, 28) !important;
+    box-shadow: 0 1px 1px rgba(62, 209, 28, 0.075) inset, 0 0 8px rgba(62, 209, 28, 0.3) !important;
+    outline: 0 none !important;
+}
+
+.input--invalid {
+    border-color: rgb(255, 0, 0);
+    border-color: rgba(255, 0, 0, 0.8) !important;
+    box-shadow: 0 1px 1px rgba(255, 0, 0, 0.075) inset, 0 0 8px rgba(255, 0, 0, 0.3) !important;
+    outline: 0 none !important;
+}
+
+.form-control:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+}
+
+.form-control:disabled:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #eee inset !important;
+}
+
+/* little hack I found to stop chrome from changing things when the user uses auto fills, it was being a real pain
+http://stackoverflow.com/questions/2920306/google-chrome-form-autofill-and-its-yellow-background
+*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active
+input:-webkit-autofill:disabled{
+    -webkit-transition-delay: 9999s ;
+    -webkit-transition: color 9999s ease-out, background-color 9999s ease-out;
+}
+
+/*MARK:  error message & success-message  */
+.error-message {
+   color: red;
+}
+
+.success-message {
+   color: rgb(62, 209, 28);
+}
+
+/*MARK: footer */
 .footer {
     margin-top:20px;
     padding-top: 15px;
@@ -222,13 +279,4 @@ that stackoverflow answer stated that you need seperate selector for each browse
 .footer__p {
     font-size: 0.8em;
     margin: 0;
-}
-
-/*MARK:  error message & success-message  */
-.error-message{
-   color:red;
-}
-
-.success-message{
-   color:rgb(62, 209, 28);
 }

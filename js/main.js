@@ -7,41 +7,62 @@ $(document).ready(function(){
         return pattern.test(emailAddress);
     };
 
-    //function to check if form variables are empty
+    //function to check if input is valid, its its not it adds the input--invalid class and returns why its invalid , if it is add the input--valid class to it
+    validateInput = function(input){
+        //if the input type is submit just return we dont care about those
+        if (input.prop('type') === 'submit' || input.prop('type') == 'button'){
+            return null;
+        }
+        //check if input is required and empty
+        if ( input.prop( 'required') === true && !input.val() ) {
+            input.addClass("input--invalid")
+                    .removeClass("input--valid");
+                    console.log("end");
+            //return error message
+            return "Please fill in all the required fields";
+        }
+        //check valid email
+        if ( input.prop( 'type') === "email" && !isValidEmailAddress( input.val() )   ) {
+            input.addClass("input--invalid")
+                    .removeClass("input--valid");
+            return "That is not a valid email !";
+        }
+        //can add some more valdiators here but there is no need because email && required is all that needed in the website atm
+        console.log("all good");
+        //if function gets this far the input is valid , add the necesarry classes, since there is no return from the function I can check if it returns nil to see if its valid
+        input.addClass("input--valid")
+                .removeClass("input--invalid");
+                console.log("end");
+        return null;
+    };
+
+    //function to check if form is valid
     checkFormIsValid = function( jqueryForm , outputTarget ){
-        //remove any error or succes message class to the output target incase its already set from a previous attempt from user
+        //remove any error or success message class to the output target incase its already set from a previous attempt from user
         outputTarget.removeClass("error-message success-message")
                         .html("Sending...");
-
-        //
+        //set isValid here so the loop can change it
         isValid = true;
         //iterate over all the inputs
         jqueryForm.find( ':input' ).each( function(i){
-            //check if input is required and if its empty
-            if ( $(this).prop( 'required') === true && !$(this).val() ) {
-                displayErrorMessage( outputTarget , "Please fill in all required fields !");
-                //focus on input
+            errorMessage = validateInput( $(this) );
+            if ( errorMessage !== null ) {
+                //got an error message during the validate input therefor the form is invalid , put the error message in the outputTarget
+                displayErrorMessage( outputTarget , errorMessage );
+                //focus the input for the user
                 $(this).focus();
-                //set value outside of loop to indicate something is wrong
+                //set is valid to false
                 isValid = false;
-                //break the loop
-                return false;
-            }
-            //check if its a input of type email and the value is not a valid email
-            if ( $(this).prop( 'type') === "email" && !isValidEmailAddress( $(this).val() )   ) {
-                displayErrorMessage( outputTarget , "That is not a valid email !");
-                $(this).focus();
-                isValid = false;
-                return false;
+
             }
         });
-        if (isValid){
-            //form is valid
-            return true;
-        } else {
-            //form is not valid
-            return false;
-        }
+        return isValid;
+    };
+
+    //function for the ajax Error handler, simply saying there was an error not to much details
+    displayErrorMessage = function(outputTarget , message) {
+        outputTarget.addClass("error-message")
+                        .html( message );
     };
 
     //function to process the data from the server and output the message into the target element
@@ -57,10 +78,12 @@ $(document).ready(function(){
         }
     };
 
-    //function for the ajax Error handler, simply saying there was an error not to much details
-    displayErrorMessage = function(outputTarget , message) {
-        outputTarget.addClass("error-message")
-                        .html( message );
+    //function to disable form
+    disableForm = function( form ){
+        form.find(':input')
+                .removeClass('input--valid input--invalid')
+                .not('[data-dismiss]')
+                .prop('disabled' , true);
     };
 
     //Modal contact form Ajax submit handler
@@ -83,12 +106,13 @@ $(document).ready(function(){
                 data = $.parseJSON(data);
                 processAjaxFormResponse(data , outputTarget );
                 if (data.status == "success") {
-                    //success , wait a little bit so user can see the success message
+                    //success , wait a little bit so user can see the success message before closing modal
                     setTimeout( function(){
                         //hide modal
                         $('.modal').modal('hide');
                     }, 1000);
                 }
+                disableForm(form);
             },
             error: function(request, status, error) {
                 displayErrorMessage( outputTarget , "Error! Please check your connection or try again later");
@@ -115,10 +139,19 @@ $(document).ready(function(){
             success: function(data) {
                 data = $.parseJSON(data);
                 processAjaxFormResponse(data , outputTarget );
+                disableForm(form);
             },
             error: function(request, status, error) {
                 displayErrorMessage( outputTarget , "Error! Please check your connection or try again later" );
             }
         });
+    });
+
+    //get all the forms on page and make all the inputs delegate their keyup events and autocomplete events to the form to validate the input as user types
+    //im using change because its easier to handle all the different types of browser autocompletes
+    //could not figure out how to deal with mouse click on the auto fill, it works on the modal contact form but not on the inline subscribe form
+    //it only validates if you press enter to select the auto fill you want , else if you click it with your mouse the validator only kicks off after the next keyup
+    $('form').on( 'keyup change' , ":input" , function(event){
+        validateInput( $(event.target) );
     });
 });
