@@ -136,7 +136,6 @@ $(document).ready(function(){
             success: function(data) {
                 data = $.parseJSON(data);
                 processAjaxFormResponse(data , form ,outputTarget );
-                disableForm(form);
             },
             error: function(request, status, error) {
                 if  (request.readyState === 0 ) {
