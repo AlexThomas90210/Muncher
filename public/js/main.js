@@ -109,7 +109,10 @@ $(document).ready(function(){
                 }
             },
             error: function(request, status, error) {
-                displayErrorMessage( outputTarget , "Error! Please check your connection or try again later");
+                if  (request.readyState === 0 ) {
+                    displayErrorMessage( outputTarget , "Error! Check your connection !");
+                }
+                displayErrorMessage( outputTarget , "Error! Someting went wrong !");
             }
         });
     });
@@ -136,7 +139,10 @@ $(document).ready(function(){
                 disableForm(form);
             },
             error: function(request, status, error) {
-                displayErrorMessage( outputTarget , "Error! Please check your connection or try again later" );
+                if  (request.readyState === 0 ) {
+                    displayErrorMessage( outputTarget , "Error! Check your connection !");
+                }
+                displayErrorMessage( outputTarget , "Error! Something went wrong !" );
             }
         });
     });
