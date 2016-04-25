@@ -1,5 +1,7 @@
 <?php
-//
+//please read the readme before looking at this file
+
+//abstract class for Savable entities
 abstract class Savable
 {
     //keeps track is its a new entity

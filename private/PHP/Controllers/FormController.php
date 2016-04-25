@@ -1,4 +1,6 @@
 <?php
+//please read the readme before looking at this file
+
 class FormController {
     const SUCCESS_MESSAGE_SENT = "Sent! Thank you for your message!";
     const SUCCESS_SUBSCRIPTION = "Subscribed!";
@@ -12,6 +14,7 @@ class FormController {
         $this->checkForContactForm;
     }
 
+    //output json for the ajax handler to use on the front end
     public function $outputJSON(){
         if ( isset($successMessage) ) {
             $response = [

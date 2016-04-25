@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- Awesome Fonts -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./public/css/style.css">
 </head>
 
 <body class="body">
@@ -21,9 +21,9 @@
     <div class="banner">
         <!-- putting logo inside container so its left aligned with the content on any width -->
         <div class="container">
-           <a href="index.html"><img class="banner__logo img-responsive" src="./images/banner-logo.png" alt="Muncher Logo" /></a>
+           <a href="index.html"><img class="banner__logo img-responsive" src="./public/images/banner-logo.png" alt="Muncher Logo" /></a>
         </div>
-        <img class="banner__background img-responsive" src="./images/banner-background.png" alt="Muncher banner Background" />
+        <img class="banner__background img-responsive" src="./public/images/banner-background.png" alt="Muncher banner Background" />
     </div>
 
     <!-- MARK: Nav -->
@@ -75,21 +75,21 @@
                 <!--Video -->
                 <div id="VideoDiv" class="col-md-9">
                     <!-- video player to go here but we our team doesnt have a video yet, so just using the image the designers provided -->
-                    <img class="img-responsive" src="images/video-image.png" alt="Video">
+                    <img class="img-responsive" src="./public/images/video-image.png" alt="Video">
                 </div>
 
                 <!-- App Store -->
                 <div class="appStore col-md-3 text-center">
                     <h2 class="appStore__heading">Available NOW!</h2>
                     <a href="https://www.apple.com">
-                        <img src="images/store-apple.png" alt="Apple App Store" />
+                        <img src="./public/images/store-apple.png" alt="Apple App Store" />
                     </a>
                     <a href="https://www.google.com">
-                        <img src="images/store-google.png" alt="Android App Store" />
+                        <img src="./public/images/store-google.png" alt="Android App Store" />
                     </a>
                     <h3 class="appStore__heading--lower">For Mobile or Tablet</h3>
-                    <img src="images/device-mobile.png" alt="Mobile Devices" />
-                    <img src="images/device-tablet.png" alt="Tablet Devices" />
+                    <img src="./public/images/device-mobile.png" alt="Mobile Devices" />
+                    <img src="./public/images/device-tablet.png" alt="Tablet Devices" />
                 </div>
             </div>
         </div>
@@ -105,10 +105,10 @@
                 was pretty fustrating trying to align this perfectly to what the designers specified , I basicly needed a col-md-7.5-->
                 <div class="social-container col-md-7 col-sm-9">
                     <a href="https://www.facebook.com">
-                        <img class="social-container__social-image" src="images/social-facebook.png" alt="Facebook icon" />
+                        <img class="social-container__social-image" src="./public/images/social-facebook.png" alt="Facebook icon" />
                     </a>
                     <a href="https://www.twitter.com">
-                        <img class="social-container__social-image" src="images/social-twitter.png" alt="Twitter Icon" />
+                        <img class="social-container__social-image" src="./public/images/social-twitter.png" alt="Twitter Icon" />
                     </a>
                     <p class="social-container__text">
                         Sign up for our newsletter to recieve upgrades and other free stuff
@@ -117,7 +117,7 @@
 
                 <!-- Subscribe Form -->
                 <div class="subscribe-form-container col-md-5 col-sm-12 text-center">
-                    <form class="form-inline" id="subscribeForm" method="post" action="contactSimple.php" onsubmit="return false;">
+                    <form class="form-inline" id="subscribeForm" method="post" action="./ajax/contactSimple.php" onsubmit="return false;">
                         <div class="form-group">
                             <input class="input--muncher input--lg" type="email" name="subscribeEmail" placeholder="name@email" required value="">
                         </div>
@@ -150,7 +150,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <!-- Contact Form -->
-                <form id="contactForm" class="form-horizontal" method="post" action="contactSimple.php" onsubmit="return false;">
+                <form id="contactForm" class="form-horizontal" method="post" action="./ajax/contactSimple.php" onsubmit="return false;">
 
                     <!-- Modal Head -->
                     <div class="modal-header">
@@ -199,6 +199,6 @@
     <!-- Bootstrap -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <!-- Main -->
-    <script src="./js/main.js"></script>
+    <script src="./public/js/main.js"></script>
 </body>
 </html>

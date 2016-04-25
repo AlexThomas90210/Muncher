@@ -1,6 +1,5 @@
 <?php
 /* For the User class I wanted to try an Active Records style design , total over kill for this project considering how basic it is but just for fun & practice.
-all entities would implement the abstract class Savable
 basically the developer just talks to the User class and it takes care of persisting itself to the database.
 ->save(); is expected to be called after working with a User instance to lower the database requests .
 ->save() is not automatically called after using a setter because if somebody did setName(); setEmail(); setSubscribed(); that would call the databse 3 times
