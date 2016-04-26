@@ -1,4 +1,13 @@
 <?php
+/*
+* Author: Alex Thomas
+* Assignment: WE4.0 PHP Web App Assignment, Digital Skills Academy
+* Student ID: D15126833
+* Date : 2016/04/26
+* Ref:  http://www.w3schools.com/php/filter_validate_email.asp
+        http://stackoverflow.com/questions/2385047/when-will-destruct-not-be-called-in-php
+*/
+
 /* For the User class I wanted to try an Active Records style design that i was reading about recently , total over kill for this project considering how basic it is but just for fun & practice.
 basically the developer just talks to the User class and it takes care of persisting itself to the database.
 ->save(); is expected to be called after working with a User instance to lower the database requests .

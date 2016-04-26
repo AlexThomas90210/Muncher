@@ -1,4 +1,12 @@
 <?php
+/*
+* Author: Alex Thomas
+* Assignment: WE4.0 PHP Web App Assignment, Digital Skills Academy
+* Student ID: D15126833
+* Date : 2016/04/26
+* Ref:
+*/
+
 //because of how im using the Savable abstract class, I want to completely hide the DB class from all the files , except for the Savable implementation method & in constructors of Savable objects.
 //to do this I want to use a singleton DB object so im not using dependecy injection everytime I make a new Savable object , or keeping a reference to seperate DB objects in every savable class
 //the reason im not using a singleton version of Mysqli is so its easy to swap out the Mysqli for any other database technology.

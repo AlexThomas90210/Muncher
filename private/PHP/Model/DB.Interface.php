@@ -1,4 +1,11 @@
 <?php
+/*
+* Author: Alex Thomas
+* Assignment: WE4.0 PHP Web App Assignment, Digital Skills Academy
+* Student ID: D15126833
+* Date : 2016/04/26
+* Ref:
+*/
 
 interface DBInterface {
     public function createUser($user);  //returns a newly inserted id

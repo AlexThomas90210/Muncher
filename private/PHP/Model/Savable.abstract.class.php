@@ -1,4 +1,12 @@
 <?php
+/*
+* Author: Alex Thomas
+* Assignment: WE4.0 PHP Web App Assignment, Digital Skills Academy
+* Student ID: D15126833
+* Date : 2016/04/26
+* Ref: 
+*/
+
 //please read the readme before looking at this file
 
 //abstract class for Savable entities

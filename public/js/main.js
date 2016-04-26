@@ -1,3 +1,11 @@
+/*
+* Author: Alex Thomas
+* Assignment: WE4.0 PHP Web App Assignment, Digital Skills Academy
+* Student ID: D15126833
+* Date : 2016/04/26
+* Ref:  http://stackoverflow.com/questions/2855865/jquery-regex-validation-of-e-mail-address
+*/
+
 $(document).ready(function(){
     //I had all my functions in a different file , but put it all into main to save a http request
 
@@ -147,7 +155,7 @@ $(document).ready(function(){
     });
 
     //get all the forms on page and make all the inputs delegate their keyup events and autocomplete events to the form to validate the input as user types
-    //im using change because its easier to handle all the different types of browser autocompletes
+    //im using change because its easier to handle all the different types of browser autocompletes altho sometimes it doesnt work......
     //could not figure out how to deal with mouse click on the auto fill, it works on the modal contact form but not on the inline subscribe form
     //it only validates if you press enter to select the auto fill you want , else if you click it with your mouse the validator only kicks off after the next keyup
     $('form').on( 'keyup change' , ":input" , function(event){

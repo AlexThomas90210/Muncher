@@ -1,4 +1,11 @@
 <?php
+/*
+* Author: Alex Thomas
+* Assignment: WE4.0 PHP Web App Assignment, Digital Skills Academy
+* Student ID: D15126833
+* Date : 2016/04/26
+* Ref:
+*/
 /* I actually took my db class from my previous IWP project and changed it a little to suit this project
 
 2 tables in mysql : Users & Messages

@@ -1,4 +1,12 @@
 <?php
+/*
+* Author: Alex Thomas
+* Assignment: WE4.0 PHP Web App Assignment, Digital Skills Academy
+* Student ID: D15126833
+* Date : 2016/04/26
+* Ref: http://www.w3schools.com/php/filter_validate_email.asp
+*/
+
 //I was worried you would dock me marks for making something as easy as contact so complicated with 7 includes,abstract classes, interfaces , singletons & MVC. and so many comments etc
 //so I made this file to show it doesnt have to be complicated
 
@@ -32,6 +40,7 @@ function successJSON($successMsg) {
 }
 
 //function to validate email
+//http://www.w3schools.com/php/filter_validate_email.asp
 function checkEmail($email) {
     if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
         //not an email, return error json , and exit the script
@@ -56,12 +65,12 @@ if (isset($_POST['contactName']) && isset($_POST['contactEmail']) && isset($_POS
                 VALUES ('$name' , '$email' , true )
                     ON DUPLICATE KEY
                     UPDATE id=LAST_INSERT_ID(id) , name='$name' ";
-    $mysqli->query($query) or exitWithErrorJSON('could not send message');
+    $mysqli->query($query) or exitWithErrorJSON('Could not send message');
     $userId = $mysqli->insert_id;
     //insert message with the generated userId, update statement will also get the id
     $query2 = "INSERT INTO Messages (userId , messageText)
                     VALUES ('$userId' , '$message')";
-    $result2 = $mysqli->query($query2) or exitWithErrorJSON('could not send message');
+    $mysqli->query($query2) or exitWithErrorJSON('Could not send message');
 
     //success , echo success json
     successJSON('Sent! Thank you for your message!');
@@ -70,14 +79,15 @@ if (isset($_POST['contactName']) && isset($_POST['contactEmail']) && isset($_POS
     //get email prepared for db
     $email = checkEmail($_POST['subscribeEmail']);
     $mysqli = new mysqli('localhost', 'root', '', 'Muncher');
+    //sanitize
     $email = $mysqli->real_escape_string($email);
 
-    //insert into DB, ignore if email already exists
+    //insert into DB, ignore if email already exists just set subcribed to true
     $query = "INSERT IGNORE INTO Users (email , subscribed)
                 VALUES ( '$email' , true)
                     ON DUPLICATE KEY
                     UPDATE subscribed = true ";
-    $result = $mysqli->query($query) or exitWithErrorJSON('Error : Could not subscribe!');
+    $mysqli->query($query) or exitWithErrorJSON('Could not subscribe!');
 
     //echo sucess
     successJSON('Subscribed!');
