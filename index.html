@@ -82,15 +82,11 @@
                 </div>
 
                 <!-- App Store -->
-                <div class="appStore col-md-3 text-center">
-                    <h2 class="appStore__heading">Available NOW!</h2>
-                    <a href="https://www.apple.com">
-                        <img src="./public/images/store-apple.png" alt="Apple App Store" />
-                    </a>
-                    <a href="https://www.google.com">
-                        <img src="./public/images/store-google.png" alt="Android App Store" />
-                    </a>
-                    <h3 class="appStore__heading--lower">For Mobile or Tablet</h3>
+                <div class="appStore col-md-offset-1 col-md-2 text-center">
+                    <h4 class="appStore__heading">AVAILABLE <span class="h3">NOW!</span></h2>
+                    <a href="https://www.apple.com"><img class="appStore__img" src="./public/images/store-apple.png" alt="Apple App Store" /></a>
+                    <a href="https://www.google.com"><img class="appStore__img" src="./public/images/store-google.png" alt="Android App Store" /></a>
+                    <h4 class="appStore__heading--lower">For Mobile or Tablet</h3>
                     <img src="./public/images/device-mobile.png" alt="Mobile Devices" />
                     <img src="./public/images/device-tablet.png" alt="Tablet Devices" />
                 </div>
@@ -115,9 +111,9 @@
                 </div>
 
                 <!-- Subscribe Form -->
-                <div class="subscribe-form-container col-md-5 col-sm-12 text-center">
-                    <form class="form-inline" id="subscribeForm" method="post" action="./ajax/contactSimple.php" onsubmit="return false;">
-                        <div class="form-group">
+                <div class="subscribe-form-container col-md-5 col-sm-12">
+                    <form class="form-inline form-inline--subscribe" id="subscribeForm" method="post" action="./ajax/contactSimple.php" onsubmit="return false;">
+                        <div class="form-group form-inline--subscribe__input">
                             <input class="input--muncher input--lg" type="email" name="subscribeEmail" placeholder="name@email" required value="">
                         </div>
                         <input class="btn--muncher btn--lg" type="submit" value="submit">

@@ -67,7 +67,7 @@ this makes the font cross browser functional
 
 /*  looking at the design , the nav is not inline with the rightside of the content , adding a little margin to the last <li> to incoporate this in the build */
 .navbar-default .navbar-nav>li:last-child> a {
-    margin-right: 50px;
+    margin-right: 35px;
 }
 
 /* as per the designer direction , the following selectors make the nav have that orange background with green text
@@ -102,6 +102,12 @@ intro and main are here just for future use I thought i would keep them in
 /* MARK: appStore */
 .appStore {
     /* kept this in even tho its empty to keep with the BEM naming convention as those .appStore__heading headings are purely for that block*/
+    padding-left:0;
+    padding-right: 10px;
+}
+
+.appStore__img{
+    max-width: 100%;
 }
 
 .appStore__heading {
@@ -155,14 +161,32 @@ sorry long explaination it was just fustrating to get it right and thought maybe
 
 /* MARK: subscribe-form-container */
 .subscribe-form-container {
-    margin-top:20px;
+    margin-top:21px;
+    padding-left: 5px;
+}
+@media (min-width: 992px){
+    .subscribe-form-container {
+        padding-left: 60px;
+    }
 }
 
+.form-inline--subscribe{
+    display:flex;
+}
+
+.form-inline--subscribe__input {
+    flex-grow: 1;
+}
+
+.form-inline--subscribe__input > .input--muncher {
+    width:100%;
+}
 /* MARK: .btn--muncher */
 .btn--muncher {
     color:rgb(249, 80, 6);
     margin-left: 10px;
-    border: 2px solid rgb(249, 80, 6);
+    margin-right: 3px;
+    border: 3px solid rgb(249, 80, 6);
     box-shadow: -3px 3px 0 0 rgb(249, 80, 6);
     background-color: rgb(92, 249, 48);
     vertical-align: middle;
@@ -182,15 +206,16 @@ sorry long explaination it was just fustrating to get it right and thought maybe
 }
 
 .btn--lg {
-    font-size:1.4em;
-    line-height: 1.5em;
+    padding: 5px 7px 3px;
+    font-size:1.35em;
+    line-height: 1.6em;
 }
 
 /* MARK: input--muncher */
 .input--muncher {
     background-color: rgb(171, 179, 216);
     color: white ;
-    border: 2px solid rgb(249, 80, 6);
+    border: 3px solid rgb(249, 80, 6);
     -webkit-transition: opacity ease-in-out .45s , border-color ease-in-out .60s , box-shadow ease-in-out .60s;
     transition: opacity ease-in-out .45s , border-color ease-in-out .60s , box-shadow ease-in-out .60s;
     padding-left:6px;
@@ -222,8 +247,9 @@ that stackoverflow answer stated that you need seperate selector for each browse
 }
 
 .input--lg {
-    font-size:1.4em;
-    line-height: 1.5em;
+    padding: 5px 7px 3px;
+    font-size:1.35em;
+    line-height: 1.6em;
 }
 
 /* using !important to override some of the bootstrap stuff also in the case of valid & invalid its necesary for it to always display like this no matter what style are applied to that element*/
@@ -271,7 +297,7 @@ input:-webkit-autofill:disabled{
 
 /*MARK: footer */
 .footer {
-    margin-top:20px;
+    margin-top:10px;
     padding-top: 15px;
     padding-bottom: 2px;
     color:white;
