@@ -170,11 +170,17 @@ sorry long explaination it was just fustrating to get it right and thought maybe
     }
 }
 
-.form-inline--subscribe{
+.form-inline--subscribe {
+    display:-webkit-box;
+    display:-webkit-flex;
+    display:-ms-flexbox;
     display:flex;
 }
 
 .form-inline--subscribe__input {
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
     flex-grow: 1;
 }
 
