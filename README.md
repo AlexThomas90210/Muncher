@@ -8,4 +8,5 @@ then I realized you have like 50 of these to correct so probably don't want us t
 all the forms are pointing at contactSimple.php , but contact.php works also
 
 GITHUB: https://github.com/AlexThomasWebElevate/Muncher
+
 WORKING EXAMPLE: http://ec2-52-16-124-54.eu-west-1.compute.amazonaws.com/Muncher/
